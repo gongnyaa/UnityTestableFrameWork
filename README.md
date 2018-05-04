@@ -25,10 +25,10 @@ MVP及びTest、Stubスクリプトの自動生成拡張コード
 このフレームワークを使ったサンプルコード  
 
 # ====フォルダ構造====  
-- TastableFrameFrameWork・・・フォルダやスクリプトの自動生成コードが入っています。
-- Plugins
-- My
--- MVP
+- TastableFrameFrameWork・・・フォルダやスクリプトの自動生成コードが入っています。  
+- Plugins  
+- My  
+-- MVP  
 --- _Assembly-My-MVP.asmdef    
 --- Foo  
 ---- FooModel.cs  
@@ -36,7 +36,7 @@ MVP及びTest、Stubスクリプトの自動生成拡張コード
 ---- FooView.cs  
 ---- FooPresenter.cs  
 -- System 
---- _Assembly-My-System.asmdef    
+--- _Assembly-My-System.asmdef     
 --- MySystem.asmdef  
 --- Hoge  
 ---- Interface  
@@ -45,8 +45,8 @@ MVP及びTest、Stubスクリプトの自動生成拡張コード
 ---- Impl  
 ----- HogeManager.cs  
 ----- HogeManagerTest.cs  
--- Infra
---- _Assembly-My-Infra.asmdef    
+-- Infra  
+--- _Assembly-My-Infra.asmdef  
 --- Boo  
 ---- Interface  
 ----- BooLocater.cs  
