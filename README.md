@@ -17,20 +17,9 @@ Unity上で TDD(テスト駆動開発)に適した MVP設計のコードを�
 
 ③生成したViewをPrefabに配置し、必要な参照を自動的にインスペクタに設定する機能  
 
-④依存性を注入しやすいSystem層・Infra層のコード・テストコード雛形を自動生成
+④依存性を注入しやすいSystem層・Infra層のコード・テストコード雛形を自動生成する機能
 
-## 【Interfaceパッケージ】  
-- BaseView  
-- BasePresenter  
-- BaseModel  
-
-## 【Implパッケージ】  
-フォルダ構造の自動生成コード  
-MVP及びTest、Stubスクリプトの自動生成拡張コード  
-並びにそれらのテストコード  
-
-## 【Sampleパッケージ】  
-このフレームワークを使ったサンプルコード  
+⑤Assembly-Definitionと共に、MVP層・System層・Infra層のフォルダを自動生成する機能
 
 # ====フォルダ構造====  
 - TastableFrameFrameWork・・・フォルダやスクリプトの自動生成コードが入っています。  
@@ -43,6 +32,8 @@ MVP及びTest、Stubスクリプトの自動生成拡張コード
 ---- FooModelTest.cs  
 ---- FooView.cs  
 ---- FooPresenter.cs  
+---- Resources.cs  
+----- Foo.prefab
 -- System 
 --- _Assembly-My-System.asmdef     
 --- MySystem.asmdef  
@@ -65,14 +56,16 @@ MVP及びTest、Stubスクリプトの自動生成拡張コード
 
 
 # ====自動化コードの使い方====  
-- Module
--- フォルダの自動生成
--- スクリプトの自動生成
--- ViewのPrefabへの追加
+プロジェクトフォルダで右クリックするとMVPというメニューが追加されているので、  
+そこから実施対象を選んで実行します。  
+Generate Folder・・・Assembly-Definitionと共に、MVP層・System層・Infra層のフォルダを自動生成します。  
+Generate MVP Scripts for Prefab・・・規約に沿って作成・配置されたPrefabを右クリックして実行すると、MVPのコードが自動生成されます。  
+Generate System Folder and Scripts・・・任意のフォルダを右クリックして実行すると、System層の雛形フォルダ・コードが自動生成されます。  
+Generate Infra Folder and Scripts・・・任意のフォルダを右クリックして実行すると、Infra層の雛形フォルダ・コードが自動生成されます。  
+Generate Infra Folder and Scripts・・・任意のフォルダを右クリックして実行すると、Infra層の雛形フォルダ・コードが自動生成されます。  
+Add View Script for Prefab・・・規約に沿って作成・配置されたPrefabを右クリックして実行すると、対応するViewコードが自動設定されます。  
 
-- System  
--- フォルダの自動生成
---- スクリプトの自動生成
+EscapeForTest・・・プロジェクトに含まれるTest.csで終わるコードに#if Unity_Editor endif を追加します。  
 
 # ====Viewの自動生成を行うためのPrefabの規約====
 現在、uGUIのText,Image,Button,ToggleGroupをサポートしています。
@@ -80,8 +73,15 @@ Prefab名はモジュール名と同一とする。   スクリプトから変�
 なお、Buttonへのイベントの設定は、 インスペクタからではなく、スクリプトのAwake内で行う。
 
 
-# ====フレームワークの使い方====  
-Prefabを作成します。
+# ====Viewの動的生成方法====  
+  var fooPresenter = new FooPresenter();
+  var fooModel = fooPresenter.CreateModel();
+  var fooView = CreateView<FooView>();
+  fooPresenter.ShowView(fooView);
+
+こんな感じで、Viewを設定します。
+
+# ====System層・Infra層の使い方===  
 
 
 # ====前提となるレイヤ構成====  
@@ -124,8 +124,20 @@ Assembly-Definitionを設定することは難しいが、相互参照をして�
 
 
 # ====各層の依存関係について====  
-【Module層】⇒【System層】のInterface  
-【System層】⇒その【System層】のInterface  
-           ⇒他の【System層】のInterface  
-【Public層】⇒【System層】のInterfaceとImpl  
-           ⇒【Module層】のInterfaceとImpl  
+【Public層】  
+⇒全ての層に依存する。  
+
+【Module層】  
+⇒【System層】のInterface  
+⇒【Infra層】のInterface  
+
+【System層】  
+⇒その【System層】のInterface  
+⇒他の【Infra】のInterface  
+場合によっては、他の【System層】のInterfaceにも依存するが、相互参照しないように気をつける  
+
+【Infra】  
+⇒その【Infra】のInterface  
+※他の何にも依存しないように気をつける。
+ただし、外部プラグインによっては、Assemblyを分ける事ができないものが存在するため、
+そのような場合はInfra層の実装部分のみ、Public層に配置する。
