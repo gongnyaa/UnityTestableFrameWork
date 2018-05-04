@@ -7,6 +7,9 @@ Unity上で TDD(テスト駆動開発)に適した MVP設計のコードを�
 あくまで、設計を改善するための意見募集のための公開です。  
 また　コードルールはRiderのUnity用標準のものを使います。namespaceも同様です。  
 
+このフレームワークに則って作成すれば、コンパイル時間がかかるような大規模プロジェクトになった場合も、
+作業対象パッケージにのみAssembly-Deffinitionを設定することで、少ないコンパイル時間でTDDを実施できるはずである。
+
 # ====利用の為に====
 このフレームワークは IDEとしてRiderを利用することを前提としています。 （基本的にUnitTestはRider上で行います。） また、サンプルはNSubstituteプラグインを利用しています。 Plugins/Editor内にNSubstitute.dllを配置してください。 NSubstitute.dllはUnity Test Toolsに同封されているようです。
 # ====フレームワークの概要====
