@@ -1,8 +1,7 @@
-# UnityMVPFrameWork
-MVP frame work for Unity.
+# UnityTestableFrameWork
+Tastable frame work for Unity.
 
-Unity上で一定の規約に沿って作られたPrefabから TDD(テスト駆動開発)に適した MVP設計のコードを自動生成するフレームワークです。
-
+Unity上で TDD(テスト駆動開発)に適した MVP設計のコードを作成するためのフレームワークです。
 
 まだ製作途中の段階のためコードは抜本的な改修が行われます。（互換性は維持されません。）  
 あくまで、設計を改善するための意見募集のための公開です。  
@@ -26,27 +25,36 @@ MVP及びTest、Stubスクリプトの自動生成拡張コード
 このフレームワークを使ったサンプルコード  
 
 # ====フォルダ構造====  
+- TastableFrameFrameWork・・・フォルダやスクリプトの自動生成コードが入っています。
+- Plugins
 - My
--- 
--Plugins
+-- MVP
+--- _Assembly-My-MVP.asmdef    
+--- Foo  
+---- FooModel.cs  
+---- FooModelTest.cs  
+---- FooView.cs  
+---- FooPresenter.cs  
+-- System 
+--- _Assembly-My-System.asmdef    
+--- MySystem.asmdef  
+--- Hoge  
+---- Interface  
+----- HogeLocater.cs  
+----- IHogeManager.cs  
+---- Impl  
+----- HogeManager.cs  
+----- HogeManagerTest.cs  
+-- Infra
+--- _Assembly-My-Infra.asmdef    
+--- Boo  
+---- Interface  
+----- BooLocater.cs  
+----- IBooManager.cs  
+---- Impl  
+----- BooManager.cs  
+----- BooManagerTest.cs  
 
-- MyModule  
--- Foo  
---- FooModel.cs  
---- FooModelTest.cs  
---- FooView.cs  
---- FooViewStub.cs  
---- FooPresenter.cs  
---- FooPresenterFake.cs（StubViewのためのデバックコードを出力用のモッククラス）  
-- MySystem  
--- Hoge  
---- Interface  
----- MySystemHogeInterface.asmdef  
----- HogeLocater.cs  
----- IHogeManager.cs  
---- Impl  
----- MySystemHogeImpl.asmdef  
----- HogeManager.asmdef  
 
 # ====自動化コードの使い方====  
 - Module
