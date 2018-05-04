@@ -10,9 +10,17 @@ Unity上で TDD(テスト駆動開発)に適した MVP設計のコードを�
 # ====利用の為に====
 このフレームワークは IDEとしてRiderを利用することを前提としています。 （基本的にUnitTestはRider上で行います。） また、サンプルはNSubstituteプラグインを利用しています。 Plugins/Editor内にNSubstitute.dllを配置してください。 NSubstitute.dllはUnity Test Toolsに同封されているようです。
 # ====フレームワークの概要====
+①MVP設計のための各View・Presenter・Modelの基底クラス、  
 
-## 【Interfaceパッケージ】  
-- BaseView  
+②規約に沿って作成されたPrefabを元に、  
+その基底クラスを継承したView・Presenter・Model並びにModelのTestコードを自動生成する機能  
+
+③生成したViewをPrefabに配置し、必要な参照を自動的にインスペクタに設定する機能  
+
+④依存性を注入しやすいSystem層・Infra層のコード・テストコード雛形を自動生成
+
+## 【Interfaceパッケージ】  
+- BaseView  
 - BasePresenter  
 - BaseModel  
 
