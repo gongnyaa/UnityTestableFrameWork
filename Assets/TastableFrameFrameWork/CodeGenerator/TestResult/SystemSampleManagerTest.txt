@@ -1,0 +1,16 @@
+using My.System.Sample.Interface;
+using NUnit.Framework;
+
+namespace My.System.Sample.Impl
+{
+    public class SampleManagerTest
+    {
+        private SampleManager _sampleManager;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _sampleManager = new SampleManager();            
+        }
+    }
+}

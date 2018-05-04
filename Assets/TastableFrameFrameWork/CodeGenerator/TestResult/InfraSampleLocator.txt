@@ -1,0 +1,18 @@
+namespace My.Infra.Sample.Interface
+{
+    public class SampleLocator : ISampleManager
+    {
+        private static ISampleManager _sampleManager;
+
+        public static readonly SampleLocator Instance = new SampleLocator();
+       
+        private SampleLocator()
+        {
+        }
+        
+        public static void Set(ISampleManager sampleManager)
+        {
+            _sampleManager = sampleManager;
+        }
+    }
+}

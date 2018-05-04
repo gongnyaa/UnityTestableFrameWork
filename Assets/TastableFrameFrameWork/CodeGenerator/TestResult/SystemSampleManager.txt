@@ -1,0 +1,9 @@
+using My.System.Sample.Interface;
+
+namespace My.System.Sample.Impl
+{
+    public class SampleManager : ISampleManager
+    {
+
+    }
+}

@@ -1,0 +1,9 @@
+using My.Infra.Sample.Interface;
+
+namespace My.Infra.Sample.Impl
+{
+    public class SampleManager : ISampleManager
+    {
+
+    }
+}

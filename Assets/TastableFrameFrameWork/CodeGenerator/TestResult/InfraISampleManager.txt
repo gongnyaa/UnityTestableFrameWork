@@ -1,0 +1,7 @@
+namespace My.Infra.Sample.Interface
+{
+    public interface ISampleManager
+    {
+       
+    }
+}

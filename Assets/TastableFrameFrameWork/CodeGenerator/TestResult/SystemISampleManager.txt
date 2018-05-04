@@ -1,0 +1,7 @@
+namespace My.System.Sample.Interface
+{
+    public interface ISampleManager
+    {
+       
+    }
+}
