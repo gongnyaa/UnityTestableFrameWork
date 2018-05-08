@@ -77,12 +77,12 @@ Prefab名はモジュール名と同一とする。   スクリプトから変�
 
 
 # ====Viewの動的生成方法====  
-  var fooPresenter = new FooPresenter();
-  var fooModel = fooPresenter.CreateModel();
-  var fooView = CreateView<FooView>();
-  fooPresenter.ShowView(fooView);
+  var fooPresenter = new FooPresenter();  
+  var fooModel = fooPresenter.CreateModel();  
+  var fooView = CreateView<FooView>();  
+  fooPresenter.ShowView(fooView);  
 
-こんな感じで、Viewを設定します。
+こんな感じで、Viewを設定します。  
 
 # ====System層・Infra層の使い方===  
 
